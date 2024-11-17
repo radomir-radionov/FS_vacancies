@@ -12,11 +12,11 @@ const PORT = process.env.PORT || 5001;
 
 // Enable CORS
 app.use(
-    cors({
-      origin: 'http://localhost:3000',
+  cors({
+      origin: ['http://localhost:3000', 'https://fsvacancies-production.up.railway.app'], // Add both local and production origins
       allowMethods: ['GET', 'POST', 'PUT', 'DELETE'], 
       allowHeaders: ['Content-Type'], 
-    })
+  })
 );
 
 // Middleware
