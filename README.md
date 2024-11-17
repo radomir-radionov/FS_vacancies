@@ -1,7 +1,8 @@
 ### Deploy:
 
 - frontend: https://fsvacancies-production.up.railway.app/
-- backend:
+
+
 
 It is for me, personal use:
 
