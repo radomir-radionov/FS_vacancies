@@ -1,3 +1,4 @@
+import cors from '@koa/cors';
 import dotenv from 'dotenv';
 import Koa from 'koa';
 import bodyParser from 'koa-bodyparser';
@@ -7,8 +8,16 @@ import applicationRoutes from './routes/applicationRoutes.js';
 dotenv.config();
 
 const app = new Koa();
-const PORT = process.env.PORT || 5001; // Use port 5001 instead of 5000
+const PORT = process.env.PORT || 5001;
 
+// Enable CORS
+app.use(
+    cors({
+      origin: 'http://localhost:3000',
+      allowMethods: ['GET', 'POST', 'PUT', 'DELETE'], 
+      allowHeaders: ['Content-Type'], 
+    })
+);
 
 // Middleware
 app.use(bodyParser());

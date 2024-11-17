@@ -1,7 +1,7 @@
 import axios from "axios";
 import { Application } from "../types/application";
 
-const API_URL = "http://localhost:5000/applications";
+const API_URL = "http://localhost:5001/applications";
 
 export const getApplications = async (): Promise<Application[]> => {
   const response = await axios.get(API_URL);

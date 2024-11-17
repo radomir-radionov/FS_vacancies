@@ -9,7 +9,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
             </head>
             <body className="bg-gray-100 text-gray-800">
-                <div className="container mx-auto py-10">{children}</div>
+                <div className="mx-auto py-10">{children}</div>
             </body>
         </html>
     );
