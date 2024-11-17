@@ -11,14 +11,27 @@ const app = new Koa();
 const PORT = process.env.PORT || 5001;
 
 // Enable CORS
+// Enable CORS with dynamic origin
 app.use(
   cors({
-      origin: ['http://localhost:3000', 'https://fsvacancies-production.up.railway.app'], // Add both local and production origins
-      allowMethods: ['GET', 'POST', 'PUT', 'DELETE'], 
-      allowHeaders: ['Content-Type'], 
+      origin: (ctx) => {
+          const allowedOrigins = [
+              'http://localhost:3000', // Local development
+              'https://fsvacancies-production.up.railway.app', // Deployed frontend
+          ];
+
+          const requestOrigin = ctx.request.header.origin;
+
+          if (allowedOrigins.includes(requestOrigin)) {
+              return requestOrigin; // Allow this origin
+          }
+
+          return ''; // Block other origins
+      },
+      allowMethods: ['GET', 'POST', 'PUT', 'DELETE'],
+      allowHeaders: ['Content-Type'],
   })
 );
-
 // Middleware
 app.use(bodyParser());
 
